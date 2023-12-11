@@ -1,62 +1,102 @@
-@import '../../sass//sassStyles/typography';
-@import '../../sass//sassStyles/variables';
-@import '../../sass/sassStyles/mixins';
-.todobox{
-    height: 400px;
-    background-color: #353435;
-    max-width: 600px;
-    margin: 0 auto;
-    padding:30px;
-    .inputwrapper{
-        flex-wrap: wrap;
-        .addbutton{
-            width: 100%;
-            height: 30px;
-            background-color: #4d42b3;
-            border:none;
-            margin:15px auto;
-            @include myfont(15px,400,$main_font);
-            color:#fff;
-            border-radius: 5px;
-        }
+@import "../../sass//sassStyles/typography";
+@import "../../sass//sassStyles/variables";
+@import "../../sass/sassStyles/mixins";
+.todobox {
+  background: #220131;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 40px;
+  .inputwrapper {
+    flex-wrap: wrap;
+    .addbutton {
+      border-radius: 15px;
+      background: linear-gradient(
+        297deg,
+        #9f51cc 0.38%,
+        rgb(99, 54, 223) 100.64%
+      );
+      box-shadow: 0px 0px 10px 0px rgba(73, 0, 35, 0.5) inset;
+      width: 200px;
+      height: 55px;
+
+      border: none;
+      margin: 15px auto;
+      @include myfont(15px, 400, $main_font);
+      color: #fff;
+      border-radius: 5px;
     }
-    h3{
-        @include myfont(30px,500,$main_font);
-        color:#fff;
-        margin:0 0 20px 0;
-        
+  }
+  h3 {
+    @include myfont(30px, 700, $main_font);
+    margin: 0 0 20px 0;
+    background: #9f51cc;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  p {
+    @include myfont(18px, 400, $main_font);
+    color: #fff;
+    margin-bottom: 0;
+  }
+  input {
+    height: 55px;
+    width: 100%;
+    @include myfont(13px, 400, $main_font);
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    padding-left: 8px;
+
+    border: 1px solid rgba(175, 0, 253, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+    &:focus-visible {
+      outline: none;
     }
-    p{
-        @include myfont(18px,400,$main_font);
-        color:#fff;
-        margin-bottom: 0;
+  }
+  .todobody {
+    .tab-content {
+      margin-top: 20px;
     }
-    input{
-        height: 30px;
-        width: 100%;
-        @include myfont(15px,400,$main_font);
-        color:#2e2e2e;
+    .nav-item {
+      a {
+        background-color: #615b61;
         border-radius: 5px;
-        border:none;
-        padding-left: 8px;
-        &:focus-visible{
-            outline:none;
+        display: inline-block;
+        padding: 5px 10px;
+        margin-right: 12px;
+        color: #fff;
+        &.active {
+          background-color: #4d42b3;
         }
+      }
     }
-    .todobody{
-        .nav-item{
-            a{
-            
-               background-color: #615b61;
-                border-radius: 5px;
-                display: inline-block;
-                padding:5px 10px;
-                margin-right: 12px;
-                color:#fff;
-                &.active{
-                    background-color: #4d42b3;
-                }
-            }
-        }
-    }
+  }
+}
+.contentdiv {
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  img {
+    width: 45px;
+    cursor: pointer;
+  }
+  h2 {
+    @include myfont(25px, 500, $main_font);
+    background: linear-gradient(
+      297deg,
+      #9f51cc 0.38%,
+      rgb(99, 54, 223) 100.64%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  p {
+    @include myfont(14px, 400, $main_font);
+    color: #ffffff7c;
+  }
 }

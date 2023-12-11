@@ -1,7 +1,9 @@
 import { SET_VARIABLE } from "./Action";
 
 const initialState = {
-    variable: 20,
+    title: "",
+    description:"",
+    duedate:""
   };
   
 export const Rootreducer = (state = initialState, action) => {
@@ -9,8 +11,7 @@ export const Rootreducer = (state = initialState, action) => {
       case SET_VARIABLE:
         return {
           ...state,
-        //   variable: action.payload + state,
-          variable: state.variable+1,
+          ...action.payload,
         };
       default:
         return state;

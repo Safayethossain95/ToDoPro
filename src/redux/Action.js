@@ -1,7 +1,7 @@
 export const SET_VARIABLE = 'SET_VARIABLE';
 
 // Define action creator
-export const setVariable = (value) => ({
+export const setVariable = ({title,description,duedate}) => ({
   type: SET_VARIABLE,
-  payload: value,
+  payload: {title,description,duedate},
 });
