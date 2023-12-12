@@ -1,0 +1,9 @@
+@import "../../sass//sassStyles/typography";
+@import "../../sass//sassStyles/variables";
+@import "../../sass/sassStyles/mixins";
+.contentdiv{
+    span{
+        color:#ffffffcc;
+        @include myfont(14px,500,$main_font);
+    }
+}
