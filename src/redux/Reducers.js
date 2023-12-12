@@ -1,4 +1,4 @@
-import { ADD_TODO,REMOVE_TODO,TOGGLE_TODO } from "./Action";
+import { ADD_TODO,REMOVE_TODO,TOGGLE_TODO,EDIT_TODO } from "./Action";
 
 const initialState = {
   todos: [],
@@ -34,6 +34,20 @@ export const Rootreducer = (state = initialState, action) => {
             : todo
         ),
       };
+      case EDIT_TODO:
+        return {
+          ...state,
+          todos: state.todos.map((todo) =>
+            todo.id === action.payload.id
+              ? {
+                  ...todo,
+                  title: action.payload.title,
+                  description: action.payload.description,
+                  dueDate: action.payload.dueDate,
+                }
+              : todo
+          ),
+        };
       default:
         return state;
     }

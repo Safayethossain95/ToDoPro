@@ -18,7 +18,7 @@
 }
 @mixin othermedia($size) {
   @if $size == mDevice {
-    @media (min-width: 320px) and (max-width:991px) { @content; }
+    @media (min-width: 320px) and (max-width:576px) { @content; }
   }
 
 }

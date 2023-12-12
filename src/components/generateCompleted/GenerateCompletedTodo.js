@@ -16,7 +16,7 @@ const GenerateCompletedTodo = () => {
 {
       todos.map((todo,key)=>{
         return todo.completed==true &&(
-        <div className="contentdiv" key={key}>
+        <div  className="contentdiv completed" key={key}>
                       <Row className="align-items-center">
                         <Col lg={9}>
                           <h2>{todo.title}</h2>

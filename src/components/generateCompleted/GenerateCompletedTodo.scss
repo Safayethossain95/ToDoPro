@@ -2,6 +2,16 @@
 @import "../../sass//sassStyles/variables";
 @import "../../sass/sassStyles/mixins";
 .contentdiv{
+    &.completed{
+        background-color: rgb(53, 49, 112);
+        h2{
+            background: linear-gradient(297deg, #d1c5d8 0.38%, rgb(173, 158, 214) 100.64%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+        }
+    }
     span{
         color:#ffffffcc;
         @include myfont(14px,500,$main_font);

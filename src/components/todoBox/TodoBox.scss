@@ -7,26 +7,12 @@
   margin: 0 auto;
   padding: 30px;
   border-radius: 40px;
-  .inputwrapper {
-    flex-wrap: wrap;
-    .addbutton {
-      border-radius: 15px;
-      background: linear-gradient(
-        297deg,
-        #9f51cc 0.38%,
-        rgb(99, 54, 223) 100.64%
-      );
-      box-shadow: 0px 0px 10px 0px rgba(73, 0, 35, 0.5) inset;
-      width: 200px;
-      height: 55px;
-
-      border: none;
-      margin: 15px auto;
-      @include myfont(15px, 400, $main_font);
-      color: #fff;
-      border-radius: 5px;
-    }
+  margin-bottom: 100px;
+  @include othermedia(mDevice){
+    width:calc(100vw - 40px);
+    margin-bottom: 100px;
   }
+  
   h3 {
     @include myfont(30px, 700, $main_font);
     margin: 0 0 20px 0;
@@ -62,14 +48,20 @@
     }
     .nav-item {
       a {
-        background-color: #615b61;
+        background-color: transparent;
         border-radius: 5px;
         display: inline-block;
         padding: 5px 10px;
         margin-right: 12px;
-        color: #fff;
+        background: #b09bbd;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border-radius: 0;
+        @include myfont(14px,600,$main_font);
+
         &.active {
-          background-color: #4d42b3;
+          border-bottom: 2px solid #4d42b3;
         }
       }
     }

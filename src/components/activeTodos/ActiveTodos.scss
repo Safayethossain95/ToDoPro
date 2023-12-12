@@ -2,8 +2,28 @@
 @import "../../sass//sassStyles/variables";
 @import "../../sass/sassStyles/mixins";
 .contentdiv{
+    &.completed{
+        background-color: rgb(53, 49, 112);
+    }
     span{
         color:#ffffffcc;
         @include myfont(14px,500,$main_font);
+    }
+    .mobilestyleoficons{
+        justify-content: flex-end;
+        @include othermedia(mDevice){
+
+            justify-content:center;
+            margin-top: 10px;
+        }
+    }
+}
+.modal-content{
+    background-color:#5d187c!important ;
+    input{
+        color:#fff;
+        &::placeholder{
+            color:#fff;
+        }
     }
 }

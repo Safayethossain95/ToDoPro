@@ -2,8 +2,48 @@
 @import "../../sass//sassStyles/variables";
 @import "../../sass/sassStyles/mixins";
 .contentdiv{
+    transition: 0.4s ease-in;
+    &.completed{
+        background-color: rgb(53, 49, 112);
+    }
     span{
         color:#ffffffcc;
         @include myfont(14px,500,$main_font);
+    }
+    img{
+        width: 45px;
+        height: 45px;
+        transition: 0.4s ease-out;
+        
+
+        &:focus{
+            transform: scale(0.8);
+        }
+    }
+    .mobilestyleoficons{
+        justify-content: flex-end;
+        @include othermedia(mDevice){
+
+            justify-content:center;
+            margin-top: 10px;
+        }
+    }
+}
+.modal-content{
+    background-color:#5d187c!important;
+    .modal-body{
+        color:#fff;
+    }
+    .modal-title{
+        color:#fff;
+    }
+    input{
+        color:#fff;
+        &::placeholder{
+            color:#fff;
+        }
+    }
+    button{
+        background-color: #5d187c;
     }
 }
