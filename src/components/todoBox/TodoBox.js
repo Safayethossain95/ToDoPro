@@ -3,9 +3,10 @@ import "./TodoBox.scss";
 import { Row, Col, Tab, Nav } from "react-bootstrap";
 import { useSelector,useDispatch } from 'react-redux';
 import GenerateTodo from "../generateTodo/GenerateTodo";
-import { addTodo } from "../../redux/Action";
+import { addTodo, removeTodo } from "../../redux/Action";
 import GenerateCompletedTodo from "../generateCompleted/GenerateCompletedTodo";
 import ActiveTodos from './../activeTodos/ActiveTodos';
+import { Modal, Button } from "react-bootstrap";
 const TodoBox = () => {
 
   const [inputTitle,setInputTitle] = useState("")
@@ -14,10 +15,10 @@ const TodoBox = () => {
   const [titleError,setTitleError] = useState("")
   const [descriptionError,setDescriptionError] = useState("")
   const [dueDateError,setDueDateError] = useState("")
+ 
   const dispatch = useDispatch();
   
-  // Dispatch an action
-  
+ 
   const handleAdd = (e) => {
     // Dispatch an action with a payload
     e.preventDefault()
@@ -125,6 +126,7 @@ const TodoBox = () => {
           </Row>
         </div>
       </div>
+      
     </div>
   );
 };

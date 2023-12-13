@@ -4,40 +4,8 @@ import { useSelector } from "react-redux";
 import "./GenerateTodo.scss";
 import { editTodo, removeTodo, toggleTodo } from "../../redux/Action";
 import { useDispatch } from "react-redux";
-import {Modal,Button} from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 const GenerateTodo = () => {
-
-  const [isClicked1, setIsClicked1] = useState(false);
-  const [isClicked2, setIsClicked2] = useState(false);  
-
-  const handleClickBounce1 = () => {
-    setIsClicked1(!isClicked1);
-    // Reset the scale to 1 after 0.3 seconds
-    setTimeout(() => {
-      setIsClicked1(false);
-    }, 300);
-  };
-  const handleClickBounce2 = () => {
-    setIsClicked2(!isClicked2);
-    // Reset the scale to 1 after 0.3 seconds
-    setTimeout(() => {
-      setIsClicked2(false);
-    }, 300);
-  };
-
-  const scaleValue = isClicked1 ? 0.9 : 1;
-  const scaleValue2 = isClicked2 ? 0.9 : 1;
-
-  const elementStyle1 = {
-    transform: `scale(${scaleValue})`,
-    transition: 'transform 0.3s ease', // Adjust the duration and easing as needed
-    cursor: 'pointer',
-  };
-  const elementStyle2 = {
-    transform: `scale(${scaleValue2})`,
-    transition: 'transform 0.3s ease', // Adjust the duration and easing as needed
-    cursor: 'pointer',
-  };
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
   const [idtoEdit, setIdtoEdit] = useState("");
@@ -49,16 +17,35 @@ const GenerateTodo = () => {
   const [descriptionError, setDescriptionError] = useState("");
   const [dueDateError, setDueDateError] = useState("");
   const todos = useSelector((state) => state.todos);
-  const [certainDeleteId,setCertainDeleteId] = useState("")
+  const [certainDeleteId, setCertainDeleteId] = useState("");
+  const [clickedTodoId1, setClickedTodoId1] = useState(null);
+  const [clickedTodoId2, setClickedTodoId2] = useState(null);
   const dispatch = useDispatch();
+  const handleClickBounce1 = (myid) => {
+    setClickedTodoId1(myid);
+    // Reset the id
+    setTimeout(() => {
+      setClickedTodoId1(null);
+    }, 300);
+  };
+  const handleClickBounce2 = (myid) => {
+    setClickedTodoId2(myid);
+    // Reset the id
+    setTimeout(() => {
+      setClickedTodoId2(null);
+    }, 300);
+  };
+
+ 
+  
   const handleRemoveTodo = () => {
     dispatch(removeTodo(certainDeleteId));
-    setShow2(false)
+    setShow2(false);
   };
   const handleCompletedTodo = (id) => {
     dispatch(toggleTodo(id));
   };
-  
+
   const handleClose = () => setShow(false);
   const handleClose2 = () => setShow2(false);
   const handleShow = (todo) => {
@@ -66,12 +53,10 @@ const GenerateTodo = () => {
     setIdtoEdit(todo.id);
     setaCertaintodo(todo);
   };
-  const handleShow2= (id) => {
-    setCertainDeleteId(id)
+  const handleShow2 = (id) => {
+    setCertainDeleteId(id);
     setShow2(true);
   };
-
-
 
   const handleEdit = (e) => {
     // Dispatch an action with a payload
@@ -94,27 +79,64 @@ const GenerateTodo = () => {
   };
   return (
     <>
-      {todos.map((todo, key) => {
-        return (
-          <div  className={todo.completed==false?"contentdiv":"contentdiv completed"} key={key}>
-            <Row className="align-items-center">
-              <Col onClick={() => handleShow(todo)} lg={9} md={9} sm={9} xs={12}>
-                <h2>{todo.title}</h2>
-                <p>{todo.description}</p>
-                <span>{todo.dueDate}</span>
-              </Col>
-              <Col lg={3} md={3} sm={3} xs={12} className="mobilestyleoficons d-flex gap-2">
-                <div onClick={() => handleShow2(todo.id)}>
-                  <img onClick={handleClickBounce1} style={elementStyle1} src="./assets/images/delete.png" alt="" />
-                </div>
-                <div onClick={() => handleCompletedTodo(todo.id)}>
-                  <img onClick={handleClickBounce2} style={elementStyle2} src="./assets/images/done.png" alt="" />
-                </div>
-              </Col>
-            </Row>
+      {todos.length > 0 ? (
+        todos.map((todo, key) => {
+          const isClicked1 = todo.id === clickedTodoId1
+          const isClicked2 = todo.id === clickedTodoId2
+          return (
+            <div
+              className={
+                todo.completed == false ? "contentdiv" : "contentdiv completed"
+              }
+              key={key}
+            >
+              <Row className="align-items-center">
+                <Col
+                  onClick={() => handleShow(todo)}
+                  lg={9}
+                  md={9}
+                  sm={9}
+                  xs={12}
+                >
+                  <h2>{todo.title}</h2>
+                  <p>{todo.description}</p>
+                  <span>{todo.dueDate}</span>
+                </Col>
+                <Col
+                  lg={3}
+                  md={3}
+                  sm={3}
+                  xs={12}
+                  className="mobilestyleoficons d-flex gap-2"
+                >
+                  <div onClick={() => handleShow2(todo.id)}>
+                    <img
+                      onClick={()=>handleClickBounce1(todo.id)}
+                      style={{ transform: isClicked1 ? 'scale(1.1)' : 'scale(1)' }}
+                      src="./assets/images/delete.png"
+                      alt=""
+                    />
+                  </div>
+                  <div onClick={() => handleCompletedTodo(todo.id)}>
+                    <img
+                      onClick={()=>handleClickBounce2(todo.id)}
+                      style={{ transform: isClicked2 ? 'scale(1.1)' : 'scale(1)' }}
+                      src="./assets/images/done.png"
+                      alt=""
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          );
+        })
+      ) : (
+        <>
+          <div className="contentdiv">
+            <h2>No ToDo to show. Add some!</h2>
           </div>
-        );
-      })}
+        </>
+      )}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>

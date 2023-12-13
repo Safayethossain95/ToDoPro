@@ -29,9 +29,5 @@
   font-weight: $font_weight;
   font-family: $font_family;
 }
-@mixin measurement($width,$height,$bd){
-  width:$width;
-  height:$height;
-  border-radius: $bd;
-}
+
 
