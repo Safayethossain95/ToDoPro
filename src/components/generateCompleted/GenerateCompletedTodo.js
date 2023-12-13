@@ -65,7 +65,7 @@ const GenerateCompletedTodo = () => {
   )
 ) : (
   <div className="contentdiv">
-    <h2>No Active ToDo to show</h2>
+    <h2>No Completed ToDo to show</h2>
   </div>
 )}
 
