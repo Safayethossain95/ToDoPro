@@ -2,7 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## First you need to download zip or clone the repository
+
+After that, you run
+
+### `npm install`
+
+
+## Then the Available Scripts
 
 In the project directory, you can run:
 
